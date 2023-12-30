@@ -6,10 +6,12 @@
     <xs:element name="Sku_alt_conversionRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="conversion_factor" type="xs:string"/>
+                <xs:element name="materialCode" type="xs:string"/>
                 <xs:element name="alternate_from_uom" type="xs:string"/>
                 <xs:element name="alternate_to_uom" type="xs:string"/>
-                <xs:element name="materialCode" type="xs:string"/>
+                <xs:element name="numerator_conversion" type="xs:string"/>
+                <xs:element name="denominator_conversion" type="xs:string"/>
+
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -26,11 +28,11 @@
 
     <xs:complexType name="sku_alt_conversion">
         <xs:sequence>
-            <xs:element name="conversion_factor" type="xs:string"/>
-            <xs:element name="alternate_from_UOM" type="xs:string"/>
-            <xs:element name="alternate_to_UOM" type="xs:string"/>
             <xs:element name="materialCode" type="xs:string"/>
-
+            <xs:element name="alternate_from_uom" type="xs:string"/>
+            <xs:element name="alternate_to_uom" type="xs:string"/>
+            <xs:element name="numerator_conversion" type="xs:string"/>
+            <xs:element name="denominator_conversion" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 

@@ -19,40 +19,36 @@ public class SKUService {
 
     public SkuAltConversionResponse getSkuresponse(@RequestBody SkuAltConversionRequest req) {
 
-        String conversion_factor = req.getConversionFactor();
+        String materialCode = req.getMaterialCode();
         String alt_from_uom = req.getAlternateFromUom();
         String alt_to_UOM = req.getAlternateToUom();
-        String materialCode = req.getMaterialCode();
+        String denominator_conversion =req.getDenominatorConversion();
+        String numerator_conversion = req.getNumeratorConversion();
+
 
         SkuAltConversionResponse skuAltConversionResponse = new SkuAltConversionResponse();
         skuAltConversionResponse.setIsSuccess(false);
 
         List<SkuAltConversion> skuAltConversionDetails = new ArrayList<>();
 
-        if(materialCode!=null && alt_from_uom !=null & alt_from_uom !=null && conversion_factor !=null)
+        if(materialCode!=null && alt_from_uom !=null & alt_from_uom !=null && denominator_conversion !=null && numerator_conversion !=null)
         {
             try {
-                List<SKUModel> skuDetails = skuRepository.getSKUData(conversion_factor,alt_from_uom,alt_to_UOM,materialCode);
-                    for(SKUModel skuData:skuDetails)
-                    {
+                List<SKUModel> skuDetails = skuRepository.getSKUData(materialCode,alt_from_uom,alt_to_UOM,denominator_conversion,numerator_conversion);
+                    for(SKUModel skuData:skuDetails) {
                         SkuAltConversion sku_altConversion = new SkuAltConversion();
-                        sku_altConversion.setConversionFactor(sku_altConversion.getConversionFactor());
-                        sku_altConversion.setAlternateFromUOM(sku_altConversion.getAlternateFromUOM());
-                        sku_altConversion.setAlternateToUOM(sku_altConversion.getAlternateToUOM());
+
                         sku_altConversion.setMaterialCode(sku_altConversion.getMaterialCode());
-                    }
+                        sku_altConversion.setAlternateFromUom(sku_altConversion.getAlternateFromUom());
+                        sku_altConversion.setAlternateToUom(sku_altConversion.getAlternateToUom());
+                        sku_altConversion.setDenominatorConversion(sku_altConversion.getDenominatorConversion());
+                        sku_altConversion.setNumeratorConversion(sku_altConversion.getNumeratorConversion());
 
-                    if (materialCode == null) {
-                    skuAltConversionResponse.setIsSuccess(false);
-                    skuAltConversionResponse.setMessage("Material Code is empty");
-                    }
 
+                    }
             }catch(Exception ex){
                 System.out.println( "Error: "+ ex.getMessage());
             }
         }return skuAltConversionResponse;
-    }
-    {
-        System.out.print("");
     }
 }
