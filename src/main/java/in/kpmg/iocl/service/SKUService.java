@@ -19,11 +19,11 @@ public class SKUService {
 
     public SkuAltConversionResponse getSkuresponse(@RequestBody SkuAltConversionRequest req) {
 
-        String materialCode = req.getMaterialCode();
-        String alt_from_uom = req.getAlternateFromUom();
-        String alt_to_UOM = req.getAlternateToUom();
-        String denominator_conversion =req.getDenominatorConversion();
-        String numerator_conversion = req.getNumeratorConversion();
+        String materialNo = req.getMaterialNo();
+        String baseUnitOfMeasure = req.getBaseUnitOfMeasure();
+        String unitOfMeasureDisplay = req.getUnitOfMeasureDisplay();
+        String numeratorConversion =req.getNumeratorConversion();
+        String denominatorConversion = req.getDenominatorConversion();
 
 
         SkuAltConversionResponse skuAltConversionResponse = new SkuAltConversionResponse();
@@ -31,18 +31,18 @@ public class SKUService {
 
         List<SkuAltConversion> skuAltConversionDetails = new ArrayList<>();
 
-        if(materialCode!=null && alt_from_uom !=null & alt_from_uom !=null && denominator_conversion !=null && numerator_conversion !=null)
+        if(materialNo!=null && baseUnitOfMeasure !=null & unitOfMeasureDisplay !=null && numeratorConversion !=null && denominatorConversion !=null)
         {
             try {
-                List<SKUModel> skuDetails = skuRepository.getSKUData(materialCode,alt_from_uom,alt_to_UOM,denominator_conversion,numerator_conversion);
+                List<SKUModel> skuDetails = skuRepository.getSKUData(materialNo,baseUnitOfMeasure,unitOfMeasureDisplay,numeratorConversion,denominatorConversion);
                     for(SKUModel skuData:skuDetails) {
                         SkuAltConversion sku_altConversion = new SkuAltConversion();
 
-                        sku_altConversion.setMaterialCode(sku_altConversion.getMaterialCode());
-                        sku_altConversion.setAlternateFromUom(sku_altConversion.getAlternateFromUom());
-                        sku_altConversion.setAlternateToUom(sku_altConversion.getAlternateToUom());
-                        sku_altConversion.setDenominatorConversion(sku_altConversion.getDenominatorConversion());
+                        sku_altConversion.setMaterialNo(sku_altConversion.getMaterialNo());
+                        sku_altConversion.setBaseUnitOfMeasure(sku_altConversion.getBaseUnitOfMeasure());
+                        sku_altConversion.setUnitOfMeasureDisplay(sku_altConversion.getUnitOfMeasureDisplay());
                         sku_altConversion.setNumeratorConversion(sku_altConversion.getNumeratorConversion());
+                        sku_altConversion.setDenominatorConversion(sku_altConversion.getDenominatorConversion());
 
 
                     }
