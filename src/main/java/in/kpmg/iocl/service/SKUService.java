@@ -29,8 +29,6 @@ public class SKUService {
         SkuAltConversionResponse skuAltConversionResponse = new SkuAltConversionResponse();
         skuAltConversionResponse.setIsSuccess(false);
 
-        List<SkuAltConversion> skuAltConversionDetails = new ArrayList<>();
-
         if(materialNo!=null && baseUnitOfMeasure !=null & unitOfMeasureDisplay !=null && numeratorConversion !=null && denominatorConversion !=null)
         {
             try {
