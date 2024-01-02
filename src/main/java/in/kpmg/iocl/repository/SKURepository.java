@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface SKURepository extends JpaRepository<SKUModel,Long> {
-    @Query(value= "Select * from tb_SKU_Data sac WHERE sac.mantr= :materialCode AND sac.meinh= :alt_from_uom AND sac.meins= :alt_to_uom AND sac.UMREN :denominator_conversion AND sac.umrez= :numerator_conversion", nativeQuery = true)
+    @Query(value= "Select * from yv_material_master_all_views_e_marm sac WHERE sac.mantr= :materialCode AND sac.meinh= :alt_from_uom AND sac.meins= :alt_to_uom AND sac.UMREN :denominator_conversion AND sac.umrez= :numerator_conversion", nativeQuery = true)
     public List<SKUModel> getSKUData(
     @Param("materialCode") String materialCode,
     @Param("alt_from_uom") String alt_from_uom,

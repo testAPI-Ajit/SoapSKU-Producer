@@ -8,10 +8,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name="tb_SKU_Data")
+@Table(name="yv_material_master_all_views_e_marm")
 public class SKUModel {
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
         private Boolean isActive = true;
         @CreationTimestamp
