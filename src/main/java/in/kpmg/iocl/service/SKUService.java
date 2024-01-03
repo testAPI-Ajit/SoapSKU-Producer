@@ -25,6 +25,7 @@ public class SKUService {
         String numeratorConversion = req.getNumeratorConversion();
         String denominatorConversion = req.getDenominatorConversion();
 
+        List<SkuAltConversion> sku_list_response=new ArrayList<>();
 
         SkuAltConversionResponse skuAltConversionResponse = new SkuAltConversionResponse();
         skuAltConversionResponse.setIsSuccess(false);
@@ -41,11 +42,15 @@ public class SKUService {
                         sku_altConversion.setUnitOfMeasureDisplay(sku_altConversion.getUnitOfMeasureDisplay());
                         sku_altConversion.setNumeratorConversion(sku_altConversion.getNumeratorConversion());
                         sku_altConversion.setDenominatorConversion(sku_altConversion.getDenominatorConversion());
-
-
+                        sku_list_response.add(sku_altConversion);
                     }
+              if (!sku_list_response.isEmpty()) {
+                  skuAltConversionResponse.setIsSuccess(true);
+                  skuAltConversionResponse.getSkuAltConversion().addAll(sku_list_response);
+
+              }
             }catch(Exception ex){
-                System.out.println( "Error: "+ ex.getMessage());
+                System.out.println( "Error in SKU Alt Conv: "+ ex.getMessage());
             }
         }return skuAltConversionResponse;
     }
