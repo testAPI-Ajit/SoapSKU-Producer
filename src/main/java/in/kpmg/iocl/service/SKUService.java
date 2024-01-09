@@ -22,8 +22,9 @@ public class SKUService {
         String materialNo = req.getMaterialNo();
         String baseUnitOfMeasure = req.getBaseUnitOfMeasure();
         String unitOfMeasureDisplay = req.getUnitOfMeasureDisplay();
-        String numeratorConversion = req.getNumeratorConversion();
         String denominatorConversion = req.getDenominatorConversion();
+        String numeratorConversion = req.getNumeratorConversion();
+
 
         List<SkuAltConversion> sku_list_response=new ArrayList<>();
 
